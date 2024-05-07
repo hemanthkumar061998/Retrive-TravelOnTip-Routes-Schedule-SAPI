@@ -1,0 +1,69 @@
+#%RAML 1.0
+title: Retrive-TravelOnTip-Routes-Schedule-SAPI
+description: "This API will retrive TravelOnTip routes and schedules for System API"
+
+uses:
+  common: /libraries/common/common-Business-library.raml
+  getSchedules: /libraries/schedules/getSchedules-Business-library.raml
+types:
+  getRoutes200Response: !include /libraries/routes/dataTypes/getRoutes-200Response-dataType.raml
+  common400Response: !include /libraries/common/dataTypes/common-400Response-dataType.raml
+  common500Response: !include /libraries/common/dataTypes/common-500Response-dataType.raml
+  common404Response: !include /libraries/common/dataTypes/common-404Response-dataType.raml
+  getSchedules200Response: !include /libraries/schedules/dataTypes/getSchedules-200Response-dataType.raml
+/{transpoartType}:
+  /{transpoartCompany}:
+    /routes:
+      get:
+        is:
+          - common.transactionId
+        responses:
+          200:
+            body:
+              application/json:
+                type: getRoutes200Response
+                example: !include /libraries/routes/examples/routes-200Respnse-Example.json    
+          400:
+            body:
+              application/json:
+                type: common400Response
+                example: !include /libraries/common/examples/common-400Response-trait.json     
+          404:
+           body:
+              application/json:
+                type: common404Response
+                example: !include /libraries/common/examples/common-404Response-Example.json        
+          500:
+            body:
+              application/json:
+                type: common500Response
+                example: !include /libraries/common/examples/common-500Response-Example.json
+    /schedules:
+      get:
+        is:
+        - common.transactionId
+        - getSchedules.departureLocation
+        - getSchedules.destinationLocation  
+        responses:
+          200:
+            body:
+              application/json:
+                type: getSchedules200Response
+                example: !include /libraries/schedules/examples/getSchedules-200Response-Example.json
+          400:
+            body:
+              application/json:
+                type: common400Response
+                example: !include /libraries/common/examples/common-400Response-trait.json     
+          404:
+           body:
+              application/json:
+                type: common404Response
+                example: !include /libraries/common/examples/common-404Response-Example.json        
+          500:
+            body:
+              application/json:
+                type: common500Response
+                example: !include /libraries/common/examples/common-500Response-Example.json
+                            
+          

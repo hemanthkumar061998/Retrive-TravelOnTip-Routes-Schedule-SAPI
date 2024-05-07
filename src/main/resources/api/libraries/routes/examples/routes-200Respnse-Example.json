@@ -1,0 +1,10 @@
+[
+  {
+    "originLocation": {
+      "locationCode": "SAP-AP"
+    },
+    "destinationLocation": {
+      "locationCode": "FRC-AS"
+    }
+  }
+]

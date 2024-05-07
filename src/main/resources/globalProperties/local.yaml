@@ -1,0 +1,10 @@
+http:
+  listner:
+    port: "8001"
+    host: "localhost"
+  requester:
+    host: "localhost"
+    port: "8083"
+    pathGetSchedules: "/travelOnTip/getSchedules"
+    pathGetRoutes: "/travelOnTip/getRoutes"
+    
